@@ -4,15 +4,21 @@ import { useAppDispatch, useAppSelector } from "../../utils/hooks";
 import { selectProducts } from "../../store/slices/products/productsSlice";
 import { useEffect, useMemo, useState } from "react";
 import { fetchProducts } from "../../store/slices/products/productsAPI";
+import { useSearchParams } from "react-router-dom";
 
 const Search = ({ show, handlerShow }: any) => {
-  const [value, setValue] = useState("");
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [value, setValue] = useState(searchParams.get("q") || "");
   const dispatch = useAppDispatch();
   const products = useAppSelector(selectProducts);
 
   useEffect(() => {
     dispatch(fetchProducts());
   }, []);
+
+  useEffect(() => {
+    setSearchParams(value && { q: value });
+  }, [value]);
 
   const filteredProduct = useMemo(() => {
     if (!value) return products;
