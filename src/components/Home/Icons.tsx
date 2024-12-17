@@ -1,11 +1,11 @@
 import { NavLink } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../utils/hooks";
-import { logoutUser, selectUsers } from "../../store/slices/users/usersSlice";
+import { selectUsers } from "../../store/slices/users/usersSlice";
 import { useEffect } from "react";
 import { fetchUsers } from "../../store/slices/users/usersAPi";
 import "./Home.scss";
 
-const Icons = ({ handlerShow }: any) => {
+const Icons = ({ handlerShow, setShowLogOutPopup }: any) => {
   const dispatch = useAppDispatch();
   const { currentUser } = useAppSelector(selectUsers);
 
@@ -43,7 +43,7 @@ const Icons = ({ handlerShow }: any) => {
             </NavLink>
           ) : (
             <button
-              onClick={() => dispatch(logoutUser())}
+              onClick={() => setShowLogOutPopup((prev: boolean) => !prev)}
               className="home--list__item"
             >
               {icon.title}

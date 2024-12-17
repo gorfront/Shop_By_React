@@ -3,9 +3,11 @@ import Footer from "../components/Home/Footer";
 import Header from "../components/Home/Header";
 import Search from "../components/Search/Search";
 import { useState } from "react";
+import LogOutPopup from "../components/LogOutPopup/LogOutPopup";
 
 const homeWrapper = () => {
   const [show, setShow] = useState(false);
+  const [showLogOutPopup, setShowLogOutPopup] = useState(false);
 
   const handlerShow = () => {
     setShow((show) => !show);
@@ -13,9 +15,16 @@ const homeWrapper = () => {
 
   return (
     <>
-      <Header handlerShow={handlerShow} />
+      <Header
+        handlerShow={handlerShow}
+        setShowLogOutPopup={setShowLogOutPopup}
+      />
       <Outlet />
       <Search show={show} handlerShow={handlerShow} />
+      <LogOutPopup
+        showLogOutPopup={showLogOutPopup}
+        setShowLogOutPopup={setShowLogOutPopup}
+      />
       <Footer />
     </>
   );

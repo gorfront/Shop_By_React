@@ -6,7 +6,7 @@ export const NAVBAR = [
   {
     id: "0",
     title: "home",
-    active: false,
+    active: true,
   },
   {
     id: "1",

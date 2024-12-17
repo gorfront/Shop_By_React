@@ -1,0 +1,52 @@
+.logOutPopup {
+  background: rgb(248, 239, 239);
+  padding: 30px;
+  max-width: 400px;
+  width: 100%;
+  height: 200px;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  &--title {
+    color: gray;
+  }
+
+  &--buttons {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 5px;
+
+    &__btn {
+      color: rgb(131, 126, 126);
+      font-size: 16px;
+      padding: 5px 8px;
+      background: transparent;
+      border: 1px solid black;
+      outline: none;
+      cursor: pointer;
+
+      &:nth-child(1):hover {
+        color: green;
+        border: 1px solid green;
+      }
+
+      &:nth-child(2):hover {
+        color: red;
+        border: 1px solid red;
+      }
+
+      &:hover {
+        filter: brightness(0.8);
+      }
+    }
+  }
+}
